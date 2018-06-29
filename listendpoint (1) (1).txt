@@ -1,0 +1,99 @@
+
+https://github.com/AndreyRage/PumpkinList-android
+
+untuk register bisa mengakses 
+http://35.231.18.55:3000/api/Users POST method
+
+
+{
+"email": "string",
+"password": "string",
+"is_admin": 0,
+"name":"string"
+}
+
+note: Email harus terdaftar karena setelah mendaftar harus memverifikasi melalui link yang dikirimkan ke email
+
+untuk login bisa mengakses
+http://35.231.18.55:3000/api/Users/login POST method
+
+{
+  "email": "string",
+  "password": "string"
+}
+
+untuk logout bisa mengakses
+http://35.231.18.55:3000/api/Users/logout?access_token=TOKEN POST method
+
+untuk mengganti nama user bisa mengakses
+http://35.231.18.55:3000/api/users/_id?access_token=TOKEN PUT
+_id diisi dengan id user yang di dapatkan setelah login
+
+{
+  "name": "string",
+  "email": "string",
+  "is_admin": "number"
+}
+
+untuk reset password bisa mengakses
+http://35.231.18.55:3000/api/users/reset POST
+{
+  "email": "string"
+}
+
+note: Email akan dikirimkan link untuk mengganti password melalui webview
+
+
+untuk mengambil nama gambar bisa mengakses
+http://35.231.18.55:3000/api/smart_advertisings?access_token=TOKEN GET method
+
+untuk mengambil gambar bisa mengakses
+http://35.231.18.55:3000/api/attachments/advertising/download/NAMA_FILE?access_token=TOKEN GET method
+
+untuk mengambil data user
+http://35.231.18.55:3000/api/UserManagements/GetUser?id=UserId&access_token=TOKEN (token dan userid didapat dari endpoint login) GET method
+
+untuk mengambil data schedule user
+http://35.231.18.55:3000/api/smart_schedules/GetScheduleByUser?id_user=UserId&access_token=TOKEN (token dan userid didapat dari endpoint login) GET method
+
+untuk menambah schedule user
+http://35.231.18.55:3000/api/smart_schedules?access_token=TOKEN POST method
+tidak perlu ubah satuan waktu 
+{
+      'id_user' :$id_user, 
+      'day' : monday(all day using lowcase),
+      'time' : 00:00
+}
+
+untuk merubah schedule user
+http://35.231.18.55:3000/api/smart_schedules?access_token=TOKEN PUT method
+tidak perlu ubah satuan waktu 
+{
+      'id_user' :$id_user, 
+      'day' : monday(all day using lowcase),
+      'time' : 00:00,
+      'id' : $id
+}
+
+------------------------------------------------------------------------------------------
+
+Socket Smart Area
+hit socket http://35.231.18.55:4000
+emit to : smart_area
+socket on : smart_area_response
+data : {
+	id_user:ID USER,
+	long : Longitude,
+	lat : Latitude
+}
+hit setiap 8 detik
+
+
+Socket Smart Schedule
+hit socket http://35.231.18.55:4000
+emit to : smart_schedule
+socket on : smart_area_response
+data : {
+  id_user:ID USER
+}
+hit setiap 1 menit

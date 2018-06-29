@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#68B3CF</color>
+    <color name="colorPrimaryDark">#68B3CF</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="birumuda">#E0F4FC</color>
+    <color name="birutua">#68B3CF</color>
+ <color name="hitamtua">#45525C</color>
+    <color name="birujg">#5AB5D2</color>
+    <color name="white">#FFFFFF</color>
+    <color name="bgBottomNavigation">#fe485a</color>
+    <color name="generalColor">#21002F</color>
+    <color name="fabButtonColor">#cc0000</color>
+
+</resources>
